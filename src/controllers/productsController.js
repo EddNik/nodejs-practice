@@ -35,3 +35,15 @@ export const updateProduct = async (req, res) => {
 
   res.status(200).json(product);
 };
+
+export const deleteProduct = async (req, res) => {
+  const { productId } = req.params;
+
+  const product = await Product.findOneAndDelete({ _id: productId });
+
+  if (!product) {
+    throw createHttpError(404, 'Product not found');
+  }
+
+  res.status(200).json(product);
+};
