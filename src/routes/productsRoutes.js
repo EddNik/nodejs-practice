@@ -3,12 +3,14 @@ import {
   getProducts,
   getProductsById,
   createProducts,
+  updateProduct,
 } from '../controllers/productsController.js';
 
 const router = Router();
 
 router.get('/products', getProducts);
-router.get('/products/:productsById', getProductsById);
+router.get('/products/:productId', getProductsById);
 router.post('/products', createProducts);
+router.patch('/products/:productId', updateProduct);
 
 export default router;
