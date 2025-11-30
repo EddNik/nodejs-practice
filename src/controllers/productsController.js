@@ -16,3 +16,8 @@ export const getProductsById = async (req, res) => {
 
   res.json(product);
 };
+
+export const createProducts = async (req, res) => {
+  const product = await Product.create(req.body);
+  res.status(201).json(product);
+};
