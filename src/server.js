@@ -3,12 +3,17 @@ import 'dotenv/config';
 import cors from 'cors';
 
 import { connectMongoDB } from './db/connectMongoDB.js';
+import { errorHandler } from './middlewares/errorHandler.js';
+import { notFoundHandler } from './middlewares/notFoundHandler.js';
 
 const app = express();
 const PORT = process.env.PORT ?? 3030;
 
 app.use(express.json());
 app.use(cors());
+
+app.use(notFoundHandler);
+app.use(errorHandler);
 
 await connectMongoDB();
 app.listen(PORT, () => {
