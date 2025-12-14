@@ -5,6 +5,7 @@ import cors from 'cors';
 import { connectMongoDB } from './db/connectMongoDB.js';
 import { errorHandler } from './middlewares/errorHandler.js';
 import { notFoundHandler } from './middlewares/notFoundHandler.js';
+import authRoutes from './routes/authRoutes.js';
 import productRouter from './routes/productsRoutes.js';
 
 const app = express();
@@ -13,6 +14,7 @@ const PORT = process.env.PORT ?? 3030;
 app.use(express.json());
 app.use(cors());
 
+app.use(authRoutes);
 app.use(productRouter);
 
 app.use(notFoundHandler);
