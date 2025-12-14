@@ -27,7 +27,7 @@ export const loginUser = async (req, res) => {
   const { email, password } = req.body;
 
   const existingUser = await User.findOne({ email });
-  if (existingUser) {
+  if (!existingUser) {
     throw createHttpError(401, 'Email or password are wrong');
   }
 
