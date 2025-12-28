@@ -6,6 +6,7 @@ import { connectMongoDB } from './db/connectMongoDB.js';
 import { errorHandler } from './middlewares/errorHandler.js';
 import { notFoundHandler } from './middlewares/notFoundHandler.js';
 import authRoutes from './routes/authRoutes.js';
+import userRoutes from './routes/userRoutes.js';
 import productRouter from './routes/productsRoutes.js';
 import cookieParser from 'cookie-parser';
 import { errors } from 'celebrate';
@@ -18,6 +19,7 @@ app.use(cookieParser());
 app.use(cors());
 
 app.use(authRoutes);
+app.use(userRoutes);
 app.use(productRouter);
 
 app.use(notFoundHandler);
